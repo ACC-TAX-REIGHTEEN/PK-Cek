@@ -111,13 +111,13 @@ def determine_status_pajak(row):
         return "Gunggung"
         
     if pd.isna(nomor_pajak):
-        return "Gunggung (Kosong)" # Aslinya khusus untuk Gunggung Tapi Nomor Pajak Kosong
+        return "Gunggung" # Aslinya khusus untuk Gunggung Tapi Nomor Pajak Kosong
         
     val = str(nomor_pajak).strip()
     val_clean = re.sub(r'[,.]00$', '', val).replace('.', '')
     
     if val in ["", "nan", "none", "null"] or val_clean == "":
-        return "Gunggung (Kosong)"
+        return "Gunggung" # Aslinya khusus untuk Gunggung Tapi Nomor Pajak Kosong
         
     if val_clean in ["0", "0.0"] or (len(val_clean) > 0 and val_clean[0] in "123456789"):
         return "Tidak Gunggung"
